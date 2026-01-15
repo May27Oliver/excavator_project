@@ -28,7 +28,8 @@ function App() {
   const [quizResults, setQuizResults] = useState<QuestionResult[]>([]); // New state for detailed results
 
   useEffect(() => {
-    fetch('/icon_mapping.json')
+    const baseUrl = import.meta.env.BASE_URL;
+    fetch(`${baseUrl}icon_mapping.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -40,8 +41,8 @@ function App() {
           const transformedData: QuizItem[] = rawData.map(item => ({
             id: item.id,
             correctAnswer: item.label,
-            questionImagePath: `/quiz_icons/icon_${item.id}.png`, 
-            answerImagePath: `/answer_icons/${item.filename}`,
+            questionImagePath: `${baseUrl}quiz_icons/icon_${item.id}.png`,
+            answerImagePath: `${baseUrl}answer_icons/${item.filename}`,
           }));
 
           const shuffledData = transformedData.sort(() => Math.random() - 0.5);
