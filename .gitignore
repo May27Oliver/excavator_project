@@ -72,7 +72,6 @@ dist
 
 # Gatsby build output
 .cache/
-public
 
 # SvelteKit build output
 .svelte-kit
@@ -80,7 +79,6 @@ public
 # Remix build output
 .cache/
 build/
-public/build/
 
 # Vite build output
 dist
